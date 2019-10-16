@@ -1,0 +1,85 @@
+h1{
+font-family: monospace;
+width: 500px;
+text-align: center; 
+margin: 0 auto;
+backdrop-filter: blur(2.5px);
+}
+
+h2{
+    font-family: monospace; 
+    color:orange;  
+}
+
+aside{
+    background-color: orangered;
+    display: inline-block; 
+    border: 5px solid  rgb(157, 89, 21);
+    margin: auto;
+    float: right;
+    
+}
+.Turns{
+    background-color: rgba(232, 232, 232, 1);
+    display: inline-block;
+    margin:  auto;
+    text-align:center;
+    align-items: center;
+    width: 140px;
+    height: 100px;
+    display: block;
+    font-size: 50px;
+    border: 1px solid rgba(172, 179, 180, 1) ;
+}
+
+body{
+   background-image: url('pic5.gif'), url("https://pbs.twimg.com/media/EGwMHtGXUAAYZIk?format=jpg&name=900x900")  ;
+    background-color: springgreen; 
+    background-repeat: repeat;
+
+}
+ 
+
+.box{
+    margin: 0 auto;
+    width: 350px;
+    height: 350px;
+    background: rgb(246, 40, 40);
+    border:10px solid rgb(157, 89, 21);
+    color:  rgb(157, 89, 21);
+    align-items:center;
+    text-align: center;
+}
+
+
+.cell{
+    float: left;
+    height: 100px;
+    width: 100px;
+    font-size: 50px ;
+    border-radius: 20px;
+    border:3px solid salmon;
+    background-color: orange;
+    margin: 5px;
+    color:orange;
+}
+
+.option{
+   height: 50px;
+   width:50px;
+   font-size: 25px;
+}
+footer{
+    display:block;
+    text-align: center;
+   
+}
+
+.box1{
+    height: 80px;
+    width:230px;
+    text-align: center;
+    background-color:rgb(246, 40, 40);
+    border:5px solid rgb(157, 89, 21);
+    b
+}
