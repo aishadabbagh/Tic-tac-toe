@@ -1,8 +1,11 @@
-//intializing winning/losing sounds
+//intializing winning/losing/theme sounds
 let winningSound= new Audio("yas repeated.mp3")
 let losingSound = new Audio("fail.mp3");
 let songTheme = new Audio("song.mp3");
-
+//to display the box of winnin
+let winningDiv= document.querySelector(".winning");
+let winningImage = document.querySelector('.winningPic');
+let winText = document.querySelector('#info');
 //intializing flag for switching
 let flag =false;
 
@@ -23,7 +26,7 @@ let playerTurn = sadButton.innerText;
 //displaying players on the display section:
 const turns = document.querySelector('.Turns');
 turns.innerText = playerTurn;
-
+songTheme.play();
 
 
 
@@ -136,13 +139,15 @@ function winning(){
     //playing sound before label
     songTheme.pause();
     winningSound.play();
-setTimeout(()=>{
-    alert("Winner is "+ playerTurn.innerText);
+    winningDiv.style.display="inline";
     winText.innerText = "Winner is "+ playerTurn.innerText;
+    winningImage.setAttribute('src', "pic2.gif");
+setTimeout(()=>{
+    // alert("Winner is "+ playerTurn.innerText);
     //auto reset
     resetting();
     counter =0;
-    },1000)
+    },3000)
 
 }
 
@@ -152,12 +157,16 @@ function tie(){
     //playing sound before label
     songTheme.pause();
     losingSound.play();
+    // alert("Potato for eternity!");
+    winningDiv.style.display="inline";
+    winText.innerText = "Potato for eternity!";
+    winningImage.setAttribute('src', "pic1.gif");
     setTimeout(()=>{
-        alert("Potato for eternity!");
-        //auto reset
+        // // alert("Potato for eternity!");
+        // //auto reset
         resetting();
         counter =0;
-    },1000)
+    },3000)
     }
     
 
@@ -250,10 +259,9 @@ function resetting(){
         flag = false;
         flag2= false;
         counter =0;
+        winningDiv.style.display="none";
 
     }
 }//when clicking the button
 reset.addEventListener('click',resetting);
-
-
 
