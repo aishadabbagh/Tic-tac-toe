@@ -1,16 +1,25 @@
-//intializing winning/losing/theme sounds
-let winningSound= new Audio("yas repeated.mp3")
+//  intializing winning/losing/theme sounds
+let winS = new Audio("yas1.mp3");
 let losingSound = new Audio("fail.mp3");
 let songTheme = new Audio("song.mp3");
-//to display the box of winnin
+
+
+//  to locate what to display in status status box:
+
+//  Main box
 let winningDiv= document.querySelector(".winning");
+//  Gif and text:
 let winningImage = document.querySelector('.winningPic');
 let winText = document.querySelector('#info');
-//intializing flag for switching
-let flag =false;
 
-//Intitalizing 2nd flag so users cannot change in the middle of the game #Lazy:
+
+
+//  intializing flag for switching
+let flag =false;
+//  Intitalizing 2nd flag so (users cannot change emojies in the middle of the game) #Lazy:
 let flag2 = false; 
+
+
 
 // intialization(type of event): 
 const eventType = 'click';
@@ -18,92 +27,141 @@ const eventType = 'click';
 // setting players(Target):
 const sadButton   = document.querySelector('#🥔');
 const happyButton = document.querySelector('#🍟');
+//  setting reset button:
 const reset       = document.querySelector('#reset');
 
-//Setting Sad potato as a default player:
+
+
+
+//  Setting Sad potato as a default player:
 let playerTurn = sadButton.innerText;
 
-//displaying players on the display section:
+
+
+//  displaying players on the display section:
 const turns = document.querySelector('.Turns');
 turns.innerText = playerTurn;
-songTheme.play();
 
 
 
-//setting players turns
-//Sad potato
+
+
+//  setting players turns:
+
+// 1- Sad potato
 const sadFirst = function(){
+    //  If the game hasn't started && no winning condition
     if (flag2 ===false && flag ===false){
+        
+         // Theme song:
         songTheme.play();
         alert("Potato plays first!");
+
+        //  Setting turns:
         playerTurn = sadButton;
-        //2nd flag 
-        flag2 = true;  
-        //displaying potato on the (player turn) screen 
-        sadPotatoLogo.innerText= ('🥔');
-    turns.innerText = playerTurn.innerText;
+
+        //  2nd flag (Game has started)
+        flag2 = true; 
+
+        //  displaying potato on the (player turn) screen 
+        sadButton.innerText= ('🥔');
+        turns.innerText = playerTurn.innerText;
+
 }
-//function when users suddenly changes emoji
+//  function when users suddenly changes emoji
     else{
         alert("Reality Check - You can't transform all at once")
     }
 }
-//Event when users chooses Frenchfry at the beginning of the game
+//  Event when users chooses sad potato at the beginning of the game:
 sadButton.addEventListener('click',sadFirst);
 
-//happy potato 
-  const happyFirst = function(){
-      if  (flag2 ===false && flag ===false){
+
+
+// 2- happy potato 
+const happyFirst = function(){
+    //  If the game hasn't started && no winning condition
+    if  (flag2 ===false && flag ===false){
+
+        // Theme song:
         songTheme.play();
         alert("French Fry plays first!");
+
+        //  Setting turns:
         playerTurn = happyButton;
-        //2nd flag 
+
+       
+        //2nd flag (Game has started)
         flag2 = true; 
+
          //displaying Frenchfry on the (player turn) screen 
-        happyPotatoLogo.innerText= ('🍟');
-    turns.innerText = playerTurn.innerText; 
+        happyButton.innerText= ('🍟');
+        turns.innerText = playerTurn.innerText; 
 }
-//function when users suddenly changes emoji
+//  function when users suddenly changes emoji
     else{
         alert("Reality Check - You can't transform all at once");
     }
 }
-//Event when users chooses Frenchfry at the beginning of the game
+//  Event when users chooses Frenchfry at the beginning of the game
 happyButton.addEventListener('click', happyFirst); 
 
 
-//Adding elements in the board:
+
+
+
+//  Adding elements in the board:
 let table = document.querySelectorAll('.cell');
+
+//  To count each move for the Tie condition:
 let counter = 0;
+
 const adding = function (){
-  
+    //  adding theme songs in the beginning of the game
+    songTheme.play();
     
+
     if(playerTurn ==happyButton){
         console.log("Furrrraies");
         counter++;
         this.innerText='🍟';
-        //adding 2nd flag (Users cant change emojies)
+
+        //  adding 2nd flag (Users cant change emojies)
         flag2=true;
+
         console.log(counter);
+
+        //  So elements cannot be change during the game:
         this.removeEventListener('click',adding);
+
+        //  checking winning conditions:
         checkingPlayerTurn();
     }
     else{
         console.log("Pootaatoo");
         counter++;
         this.innerText='🥔';
-        //adding 2nd flag (Users cant change emojies)
+
+        //  adding 2nd flag (Users cant change emojies)
         flag2=true;
+
         console.log(counter);
+
+        //  So elements cannot be change during the game:
         this.removeEventListener('click',adding);
+
+        //  checking winning conditions:
         checkingPlayerTurn();
     }
-    //Displaying player turn
+
+    //  Displaying player turn
     turns.innerText = playerTurn.innerText;
 }
 
-//Function so all cells are clickable and connected
-for (let i=0; i< table.length; i++){
+
+
+//  Function so all cells are clickable and connected:
+    for (let i=0; i< table.length; i++){
         table[i].addEventListener("click",adding );
 }
 
@@ -116,29 +174,39 @@ function addingListener() {
 }
 
 
-//Switching players:
+
+
+
+//  Switching players:
 function checkingPlayerTurn(){
+
+//  checking winning conditions:    
     win();
-//flag is added so the player wont switch in the end of the game:
-if(flag === false){
-    if (playerTurn === happyButton){
-playerTurn = sadButton;
+
+//  flag is added so the player wont switch at the end of the game:
+    if(flag === false){
+        if (playerTurn === happyButton){
+                playerTurn = sadButton;
     }
-else {
-playerTurn = happyButton;   
+        else {
+                playerTurn = happyButton; 
+
         }   
     }
 }
 
 
 //Winning statement:
+
+    //Clearing all previous actions from board:
 function winning(){
+
     for (let i=0; i< table.length; i++){
         table[i].removeEventListener("click",adding);
     }
-    //playing sound before label
+    //playing sound before label:
+    winS.play();
     songTheme.pause();
-    winningSound.play();
     winningDiv.style.display="inline";
     winText.innerText = "Winner is "+ playerTurn.innerText;
     winningImage.setAttribute('src', "pic2.gif");
@@ -152,9 +220,9 @@ setTimeout(()=>{
 }
 
 
-//Tie condition:
+//  Tie condition:
 function tie(){
-    //playing sound before label
+    //  playing sound before label
     songTheme.pause();
     losingSound.play();
     // alert("Potato for eternity!");
