@@ -1,4 +1,4 @@
-Project01: Tic-Tac-Toe:
+<h1>Project01: Tic-Tac-Toe:<h1>
 Aisha Dabbagh
 
 Table of content:
