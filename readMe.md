@@ -32,20 +32,25 @@ Tic-tac-toe (American English), or Xs and Os is a paper-and-pencil game for two 
 <h3>Methodology:</h3>
 According to the games wining rules, winning can achieved with three markings horizontal, vertical, or diagonal. In the following I have used this logic to check winning conditions:
 
-* 1-
+* 1- 
     table[0]=== table[1] &&  table[1] === table[2]
+
 * 2-
     table[3]=== table[4] &&  table[4]=== table[5]
 * 3- 
     table[6]=== table[7]&&  table[7]=== table[8]
-    //columns:
+
+*    //columns:
+
 * 4-
     table[0]=== table[3] &&  table[3]=== table[6]
 * 5-
     table[1]=== table[4] &&  table[4]=== table[7]
 * 6-
     table[2]=== table[5] &&  table[5] === table[8]
-    //Crisscross:
+
+*    //Crisscross:
+
 * 7-
     table[0]=== table[4]&&  table[4]=== table[8]
 * 8-
@@ -92,8 +97,9 @@ sadFirst() and happyFirst();
 
 
 <h3>Future Plans:</h3>
-*-	User will be able to see scores. 
-*-	User will be able to play with the computer 
-*-	User will be able to play against other competitors from different areas.
-*-	Site will be full responsive 
+
+*	User will be able to see scores. 
+*	User will be able to play with the computer 
+*	User will be able to play against other competitors from different areas.
+*	Site will be full responsive 
 
